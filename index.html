@@ -325,7 +325,7 @@ function joinChat() {
 
     // Toggle Contact info display
     function toggleContact() {
-      alert("Contact us at: sam.massfeller@icloud.com");
+      alert("Contact us at: sam.massfeller@icloud.com or 904-609-2539");
     }
 
     // Toggle Theme (Dark/Light Mode)
@@ -460,6 +460,29 @@ function joinChat() {
         document.getElementById("loading").style.display = "none";
       });
     }
+
+
+    // Listen for new messages in the 'school_chat' messages collection
+    db.collection("chats")
+      .doc("school_chat") // Target the school chat document
+      .collection("messages") // Monitor the messages sub-collection
+      .orderBy("timestamp", "asc") // Sort by timestamp (ascending)
+      .onSnapshot((snapshot) => {
+        snapshot.docChanges().forEach((change) => {
+          if (change.type === "added") {
+            // When a new message is added, play a sound
+            playNotificationSound();
+          }
+        });
+      });
+
+    // Function to play a notification sound
+    function playNotificationSound() {
+      const audio = new Audio('https://www.soundjay.com/button/beep-07.wav'); // Example sound URL
+      audio.play();
+    }
+
+    
   </script>
 </body>
 </html>
