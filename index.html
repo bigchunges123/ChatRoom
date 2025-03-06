@@ -219,7 +219,54 @@ $$/      $$/  $$$$$$$/ $$/  $$$$$$$/  $$$$$$/  $$/  $$/  $$/  $$$$$$$/          
     });
 </script>
 
+<script>
+    // Request notification permission when the page loads
+document.addEventListener("DOMContentLoaded", () => {
+    if (Notification.permission !== "granted") {
+        Notification.requestPermission();
+    }
+});
 
+// Function to show a notification
+function showNotification(sender, message) {
+    if (Notification.permission === "granted") {
+        new Notification(`${sender} says:`, {
+            body: message,
+            icon: "https://cdn-icons-png.flaticon.com/512/733/733585.png", // Change to your own icon
+        });
+    }
+}
+
+// Listen for new messages in Firestore
+function listenForMessages(chatCode) {
+    db.collection("chats")
+      .doc(chatCode)
+      .collection("messages")
+      .orderBy("timestamp", "desc")
+      .limit(1) // Get the latest message
+      .onSnapshot((snapshot) => {
+          snapshot.docChanges().forEach((change) => {
+              if (change.type === "added") {
+                  const data = change.doc.data();
+                  showNotification(data.sender, data.message);
+              }
+          });
+      });
+}
+
+// Call this function after joining a chat
+function joinChat() {
+    let chatCode = document.getElementById("chatCode").value.trim();
+    if (chatCode) {
+        currentChatCode = chatCode;
+        document.getElementById("chat-container").style.display = "block";
+        document.getElementById("chat-code-container").style.display = "none";
+        document.getElementById("chatRoom").innerText = chatCode;
+        listenForMessages(chatCode);
+    }
+}
+
+</script>
 
 
     <!-- Username Input -->
