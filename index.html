@@ -1,10 +1,12 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chatroom *Made by sam</title>
-  <h2>Welcome to ChatRoom *Made by sam massfeller</h2>
+
 
   <style>
     body {
@@ -168,8 +170,22 @@
   <div class="top-bar">
     <button onclick="toggleContact()">Contact</button>
     <button onclick="toggleTheme()">🌙 Toggle Theme</button>
+    <button id="closeAndOpenBtn">Teacher!</button>
   </div>
-
+<h2>
+  <pre style="font-family: 'Courier New', monospace; white-space: pre-wrap; word-wrap: break-word; font-size: 8px;">
+    __       __            __                                                      __                       ______   __                    __              _______                                    
+/  |  _  /  |          /  |                                                    /  |                     /      \ /  |                  /  |            /       \                                   
+$$ | / \ $$ |  ______  $$ |  _______   ______   _____  ____    ______         _$$ |_     ______        /$$$$$$  |$$ |____    ______   _$$ |_           $$$$$$$  |  ______    ______   _____  ____  
+$$ |/$  \$$ | /      \ $$ | /       | /      \ /     \/    \  /      \       / $$   |   /      \       $$ |  $$/ $$      \  /      \ / $$   |   ______ $$ |__$$ | /      \  /      \ /     \/    \ 
+$$ /$$$  $$ |/$$$$$$  |$$ |/$$$$$$$/ /$$$$$$  |$$$$$$ $$$$  |/$$$$$$  |      $$$$$$/   /$$$$$$  |      $$ |      $$$$$$$  | $$$$$$  |$$$$$$/   /      |$$    $$< /$$$$$$  |/$$$$$$  |$$$$$$ $$$$  |
+$$ $$/$$ $$ |$$    $$ |$$ |$$ |      $$ |  $$ |$$ | $$ | $$ |$$    $$ |        $$ | __ $$ |  $$ |      $$ |   __ $$ |  $$ | /    $$ |  $$ | __ $$$$$$/ $$$$$$$  |$$ |  $$ |$$ |  $$ |$$ | $$ | $$ |
+$$$$/  $$$$ |$$$$$$$$/ $$ |$$ \_____ $$ \__$$ |$$ | $$ | $$ |$$$$$$$$/         $$ |/  |$$ \__$$ |      $$ \__/  |$$ |  $$ |/$$$$$$$ |  $$ |/  |        $$ |  $$ |$$ \__$$ |$$ \__$$ |$$ | $$ | $$ |
+$$$/    $$$ |$$       |$$ |$$       |$$    $$/ $$ | $$ | $$ |$$       |        $$  $$/ $$    $$/       $$    $$/ $$ |  $$ |$$    $$ |  $$  $$/         $$ |  $$ |$$    $$/ $$    $$/ $$ | $$ | $$ |
+$$/      $$/  $$$$$$$/ $$/  $$$$$$$/  $$$$$$/  $$/  $$/  $$/  $$$$$$$/          $$$$/   $$$$$$/         $$$$$$/  $$/   $$/  $$$$$$$/    $$$$/          $$/   $$/  $$$$$$/   $$$$$$/  $$/  $$/  $$/ 
+  </pre>
+</h2>
+<h3 style="font-size: 0.8rem;">Made by sam massfeller</h3>
   <div id="login-container">
     <!-- Login/Signup Form -->
     <div class="login-form-container">
@@ -180,6 +196,31 @@
       <button onclick="signup()">Signup</button>
       <p id="login-message" class="login-message"></p>
     </div>
+
+
+<script>
+    document.getElementById("closeAndOpenBtn").addEventListener("click", function() {
+        // Close the current tab
+        window.close();
+        
+        // Open the new URL in a new tab
+        window.open('https://clever.com', '_blank');
+    });
+
+    // Event listener for backtick key (` `)
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "`") {
+            // Close the current tab
+            window.close();
+            
+            // Open the new URL in a new tab
+            window.open('https://clever.com', '_blank');
+        }
+    });
+</script>
+
+
+
 
     <!-- Username Input -->
     <div class="username-input-container" id="username-input-container" style="display:none;">
